@@ -1,0 +1,65 @@
+Q.3 
+You are given a linked list where:
+
+Each node has two pointers:
+
+next → points to the next list
+
+bottom → points to a sorted sub-list
+
+All individual lists are sorted
+
+Task
+
+Flatten the linked list so that:
+
+All nodes appear in a single sorted list
+
+The flattened list uses bottom pointers only
+
+next pointers should be ignored in the final list
+
+✅ Approach (Using Min Heap)
+
+Traverse the entire linked list using next and bottom
+
+Store all node values in a PriorityQueue (Min Heap)
+
+Extract elements one by one from the heap
+
+Create a new sorted linked list using bottom pointers
+
+This approach is easy to understand and avoids complex pointer manipulation.
+
+-----code in java------
+class Solution {
+    public Node flatten(Node root) {
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        Node temp = root;
+
+        // Step 1: Collect all values
+        while (temp != null) {
+            pq.add(temp.data);
+            Node curr = temp.bottom;
+            while (curr != null) {
+                pq.add(curr.data);
+                curr = curr.bottom;
+            }
+            temp = temp.next;
+        }
+
+        // Step 2: Build flattened list using bottom pointer
+        Node dummy = new Node(0);
+        Node tail = dummy;
+
+        while (!pq.isEmpty()) {
+            tail.bottom = new Node(pq.poll());
+            tail = tail.bottom;
+        }
+
+        return dummy.bottom;
+    }
+}
+Time Complexity	O(N log N)
+Space Complexity	O(N)
