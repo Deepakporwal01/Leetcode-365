@@ -1,0 +1,55 @@
+Q.4 Given an integer array nums, return the sum of divisors of all numbers that have exactly four divisors.
+✅ Approach
+
+For each number:
+
+Iterate only up to √num to find divisor pairs
+
+Count divisors and calculate their sum
+
+If a number has exactly 4 divisors, add its divisor sum to the final answer
+
+This avoids unnecessary iterations and handles perfect squares correctly.
+
+🧠 Key Observations
+
+Divisors come in pairs (i, num / i)
+
+If i == num / i, count only once
+
+Only numbers with exactly 4 divisors contribute to the answer
+Java COde 
+class Solution {
+    public int sumFourDivisors(int[] nums) {
+        int totalSum = 0;
+
+        for (int num : nums) {
+            int divisorCount = 0;
+            int divisorSum = 0;
+
+            for (int i = 1; i * i <= num; i++) {
+                if (num % i == 0) {
+                    int d1 = i;
+                    int d2 = num / i;
+
+                    if (d1 == d2) {
+                        divisorCount++;
+                        divisorSum += d1;
+                    } else {
+                        divisorCount += 2;
+                        divisorSum += d1 + d2;
+                    }
+                }
+            }
+
+            if (divisorCount == 4) {
+                totalSum += divisorSum;
+            }
+        }
+        return totalSum;
+    }
+}
+Time Complexity
+
+O(n √m)
+where n is the array length and m is the maximum value in nums
