@@ -2,7 +2,7 @@ Q.3
 You are given a linked list where:
 
 Each node has two pointers:
-
+ 
 next → points to the next list
 
 bottom → points to a sorted sub-list
