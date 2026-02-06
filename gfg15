@@ -5,7 +5,7 @@ class Solution {
         
         int[] nums=new int[n];
         
-        Arrays.fill(nums,1);
+        Arrays.fill(nums,1); 
          
         for(int i =1;i<n;i++){
             if(arr[i]>arr[i-1])
