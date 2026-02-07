@@ -7,7 +7,7 @@ class Solution {
             if(arr[i] == 20){
                 if(ten > 0 && five > 0){
                     ten--;
-                    five--; 
+                    five--;   
                 }
                 else if(five >= 3){
                     five -= 3;
