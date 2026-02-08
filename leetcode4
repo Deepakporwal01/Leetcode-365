@@ -6,7 +6,7 @@ For each number:
 Iterate only up to √num to find divisor pairs
 
 Count divisors and calculate their sum
-
+ 
 If a number has exactly 4 divisors, add its divisor sum to the final answer
 
 This avoids unnecessary iterations and handles perfect squares correctly.
